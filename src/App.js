@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     const controller = new AbortController();
-
+    
     const fetchData = async () => {
       try {
         const res = await axios.get(`http://localhost:4040/users?q=${query}`, {
@@ -20,12 +20,14 @@ function App() {
         if (err.message === "canceled") {
           console.log(`fetch aborted`);
         } else {
-          console.log(`ye chize die`);
+          console.log(`somthing else`);
         }
       }
     };
 
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 500)
 
     return () => controller.abort();
   }, [query]);
