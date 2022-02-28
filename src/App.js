@@ -5,9 +5,11 @@ import Table from "./Table";
 function App() {
   const [query, setQuery] = useState("");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true)
     
     const fetchData = async () => {
       try {
@@ -15,6 +17,7 @@ function App() {
           signal: controller.signal,
         });
         setData(res.data);
+        setLoading(false)
         console.log(res.data);
       } catch (err) {
         if (err.message === "canceled") {
@@ -40,6 +43,7 @@ function App() {
         onChange={(e) => setQuery(e.target.value)}
       />
         {data && <Table users={data} />}
+        {loading && <p>Loading...</p>}
     </div>
   );
 }
