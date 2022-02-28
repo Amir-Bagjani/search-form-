@@ -3,6 +3,7 @@ import Table from "./Table";
 import { Users } from "./users"
 
 const keys = ["first_name", "last_name", "email"]
+console.log(Users[0]["email"])
 
 function App() {
   const [query,setQuery] = useState("")
