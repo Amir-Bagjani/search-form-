@@ -1,9 +1,16 @@
-
+import { useState } from "react";
+import { Users } from "./users"
 
 function App() {
+  const [query,setQuery] = useState("")
   return (
     <div className="App">
-      yooo
+      <input className="input" type="search" onChange={e => setQuery(e.target.value)} />
+      <ol>
+        {Users.map(user => (
+          <li key={user.id}>{user.first_name}</li>
+        ))}
+      </ol>
     </div>
   );
 }
