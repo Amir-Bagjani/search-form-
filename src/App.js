@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <input className="input" type="search" onChange={e => setQuery(e.target.value)} />
       <ol>
-        {Users.map(user => (
+        {Users.filter(user => user.first_name.toLowerCase().includes(query)).map(user => (
           <li key={user.id}>{user.first_name}</li>
         ))}
       </ol>
